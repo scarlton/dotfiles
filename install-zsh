@@ -8,7 +8,7 @@ mkdir -p ~/.oh-my-zsh/custom/themes/powerlevel9k
 curl -o ~/.oh-my-zsh/custom/themes/powerlevel9k/powerlevel9k.zsh-theme https://raw.githubusercontent.com/bhilburn/powerlevel9k/master/powerlevel9k.zsh-theme
 
 # set the zsh theme
-sed 's/^ZSH_THEME=".*"/ZSH_THEME="powerlevel9k\/powerlevel9k"/g' ~/.zshrc
+sed -i '' 's/^ZSH_THEME=".*"/ZSH_THEME="powerlevel9k\/powerlevel9k"/g' ~/.zshrc
 
 # zsh theme variable
 echo "export DEFAULT_USER=steve" >> ~/.zshrc
