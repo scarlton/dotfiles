@@ -9,7 +9,11 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 # set the zsh theme
 sed -i '' 's/^ZSH_THEME=".*"/ZSH_THEME="powerlevel9k\/powerlevel9k"/g' ~/.zshrc
 
-# zsh theme variable
-echo "export DEFAULT_USER=steve" >> ~/.zshrc
+# set up theme variables
+cat >> ~/.zshrc << EOM
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv vcs)
+
+export DEFAULT_USER=steve
+EOM
 
 # download Input font from http://input.fontbureau.com/download/
