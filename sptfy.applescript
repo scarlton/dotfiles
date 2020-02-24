@@ -6,13 +6,19 @@ on run argv
 		set activity to item 1 of argv
 
 		tell application "Spotify"
-			if activity is "track" then
+			if activity is contained by {"current", "artist", "track"} then
 				set currentStatus to player state as string
 				if currentStatus is "playing" then
 					set currentTrack to name of current track as string
 					set currentArtist to artist of current track as string
-					set nowPlaying to currentArtist & " - " & currentTrack
-					return nowPlaying
+
+					if activity is "current" then
+					    return currentArtist & " - " & currentTrack
+					else if activity is "artist" then
+					    return currentArtist
+					else if activity is "track" then
+					    return currentTrack
+					end if
 				end if
 			else if activity is "previous" then
 				previous track
