@@ -1,19 +1,16 @@
 #!/bin/bash
 
 # install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install a zsh theme
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
 # set the zsh theme
-sed -i '' 's/^ZSH_THEME=".*"/ZSH_THEME="powerlevel9k\/powerlevel9k"/g' ~/.zshrc
+sed -i '' 's/^ZSH_THEME=".*"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
 
-# set up theme variables
-cat >> ~/.zshrc << EOM
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv vcs)
+# move configuration into place
+cp ./p10k.zsh ~/.p10k.zsh
 
-export DEFAULT_USER=steve
-EOM
-
-# download Input font from http://input.fontbureau.com/download/
+# configure theme, install required fonts
+p10k configure
